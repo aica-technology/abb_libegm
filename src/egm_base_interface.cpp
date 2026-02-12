@@ -90,6 +90,7 @@ bool EGMBaseInterface::InputContainer::extractParsedInformation(const RobotAxes&
       parse(current_.mutable_header(), egm_robot_.header()) &&
       parse(current_.mutable_feedback(), egm_robot_.feedback(), axes) &&
       parse(current_.mutable_planned(), egm_robot_.planned(), axes) &&
+      (egm_robot_.has_measuredforce() ? parse(current_.mutable_measured_force(), egm_robot_.measuredforce()) : true) &&
       parse(current_.mutable_status(), egm_robot_))
   {
     if (first_message_)
