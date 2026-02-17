@@ -909,25 +909,26 @@ bool parse(wrapper::Planned* p_target, const EgmPlanned& source, const RobotAxes
 bool parse(wrapper::Wrench* p_target, const EgmMeasuredForce& source)
 {
   bool success = true;
+  std::cerr << source.force_size() << std::endl;
 
-  if (p_target)
-  {
-    p_target->Clear();
+  // if (p_target)
+  // {
+  //   p_target->Clear();
 
-    if (source.force_size() == 6)
-    {
-      p_target->mutable_force()->set_x(source.force(0));
-      p_target->mutable_force()->set_y(source.force(1));
-      p_target->mutable_force()->set_z(source.force(2));
-      p_target->mutable_torque()->set_x(source.force(3));
-      p_target->mutable_torque()->set_y(source.force(4));
-      p_target->mutable_torque()->set_z(source.force(5));
-    }
-    else
-    {
-      success = false;
-    }
-  }
+  //   if (source.force_size() == 6)
+  //   {
+  //     p_target->mutable_force()->set_x(source.force(0));
+  //     p_target->mutable_force()->set_y(source.force(1));
+  //     p_target->mutable_force()->set_z(source.force(2));
+  //     p_target->mutable_torque()->set_x(source.force(3));
+  //     p_target->mutable_torque()->set_y(source.force(4));
+  //     p_target->mutable_torque()->set_z(source.force(5));
+  //   }
+  //   else
+  //   {
+  //     success = false;
+  //   }
+  // }
 
   return success;
 }
