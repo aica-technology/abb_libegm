@@ -173,6 +173,18 @@ message CartesianSpace
 
 //===========================================================
 //
+// Force sensor related messages.
+//
+//===========================================================
+
+message Wrench
+{
+  optional Cartesian force  = 1; // Units [N]
+  optional Cartesian torque = 2; // Units [Nm]
+}
+
+//===========================================================
+//
 // Combined joint and Cartesian space auxiliary messages.
 //
 //===========================================================
@@ -214,10 +226,11 @@ message Planned
 // Inputs extracted from the robot controller outbound messages (i.e. EgmRobot).
 message Input
 {
-  optional Header   header   = 1;
-  optional Feedback feedback = 2;
-  optional Planned  planned  = 3;
-  optional Status   status   = 4;
+  optional Header   header         = 1;
+  optional Feedback feedback       = 2;
+  optional Planned  planned        = 3;
+  optional Status   status         = 4;
+  optional Wrench   measured_force = 5;
 }
 
 // Outputs to send to the robot controller.
