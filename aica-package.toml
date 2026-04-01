@@ -1,0 +1,22 @@
+#syntax=ghcr.io/aica-technology/package-builder:v1.6.1
+
+[signing]
+signer = "v2.0.2"
+enabled = true
+
+[metadata]
+version = "1.7.0"
+description = "Core collection"
+
+[build]
+type = "ros"
+image = "v2.0.6-jazzy"
+
+[build.dependencies]
+"@aica/foss/control-libraries" = "v9.2.0"
+
+[build.packages.components]
+source = "./"
+
+[build.packages.components.dependencies.apt]
+libboost-dev = "*"

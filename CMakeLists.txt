@@ -73,6 +73,7 @@ endif()
 
 set(
   SRC_FILES
+    src/server_node.cpp
     src/egm_base_interface.cpp
     src/egm_common.cpp
     src/egm_common_auxiliary.cpp
@@ -166,6 +167,10 @@ export(
   FILE "${PROJECT_BINARY_DIR}/${PROJECT_NAME}Targets.cmake"
   NAMESPACE ${PROJECT_NAME}::
 )
+
+# Add UDP server executable
+add_executable(server_node src/server_node.cpp)
+target_link_libraries(server_node PRIVATE ${PROJECT_NAME} ${PROTOBUF_LIBRARIES} Boost::system Boost::thread)
 
 install(
   EXPORT export_${PROJECT_NAME}

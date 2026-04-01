@@ -1,0 +1,26 @@
+{
+  "name": "libegm",
+  "remoteUser": "ros2",
+  "initializeCommand": [
+    "docker",
+    "build",
+    "--file=aica-package.toml",
+    "--target=development",
+    "--build-arg=config.signing.enabled=false",
+    "--tag=libegm:development",
+    "."
+  ],
+  "image": "libegm:development",
+  "runArgs": ["--network=host"],
+  "workspaceMount": "source=${localWorkspaceFolder},target=/home/ros2/.devcontainer,type=bind,consistency=cached",
+  "workspaceFolder": "/home/ros2/.devcontainer",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools-extension-pack",
+        "llvm-vs-code-extensions.vscode-clangd",
+        "xaver.clang-format"
+      ]
+    }
+  }
+}
